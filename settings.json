@@ -1,0 +1,14 @@
+{
+
+    "request": {
+
+        "url": "https://irkutsk.cian.ru",
+        "deal_type": "sale",
+        "engine_version": 2,
+        "offer_type": "flat",
+        "p": 1,
+        "change_page_next": true,
+        "region": 4774
+    }
+
+}
