@@ -9,7 +9,7 @@ def runApplication():
 
     result = requests.get(link)
 
-    if (result.status_code != 500):
+    if (result.status_code != 200):
         errorText = "Ошибка подключения к сайту"
         printError(errorText)
         return
@@ -32,11 +32,11 @@ def getLink(p = 1):
     offerType = settings.getRequestSetting("offer_type")
     region = settings.getRequestSetting("region")
 
-    params.append("deal_type=" + str(dealType))
-    params.append("engine_version=" + str(engineVersion))
-    params.append("offer_type=" + str(offerType))
-    params.append("p=" + str(p))
-    params.append("region=" + str(region))
+    params.append("deal_type="       + str(dealType))
+    params.append("engine_version="  + str(engineVersion))
+    params.append("offer_type="      + str(offerType))
+    params.append("p="               + str(p))
+    params.append("region="          + str(region))
 
     paramsStr = paramSeparator.join(params)
 
