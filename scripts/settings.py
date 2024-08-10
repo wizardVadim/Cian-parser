@@ -7,8 +7,8 @@ def parseSettingsJSON(rootPath):
 def getSettings():
     return settings
 
-settings = ""
-
+def getRequestSetting(settingsName):
+    return settings["request"][settingsName]
 
 rootPath = Path(__file__).resolve().parents[1]
 settings = parseSettingsJSON(rootPath)
