@@ -1,0 +1,23 @@
+{
+    "request": {
+        "url": "https://irkutsk.cian.ru",
+        "deal_type": "sale",
+        "engine_version": 2,
+        "offer_type": "flat",
+        "region": 4774
+    },
+    "html": {
+        "card": {
+            "class": "_93444fe79c--card--ibP42",
+            "data-testid": "offer-card",
+            "title": {
+                "class": "_93444fe79c--color_primary_100--AuVro _93444fe79c--lineHeight_28px--KFXmc _93444fe79c--fontWeight_bold--BbhnX _93444fe79c--fontSize_22px--sFuaL _93444fe79c--display_block--KYb25 _93444fe79c--text--e4SBY _93444fe79c--text_letterSpacing__normal--tfToq",
+                "data-mark": "OfferTitle"
+            },
+            "price": {
+                "class": "_93444fe79c--color_black_100--Ephi7 _93444fe79c--lineHeight_28px--KFXmc _93444fe79c--fontWeight_bold--BbhnX _93444fe79c--fontSize_22px--sFuaL _93444fe79c--display_block--KYb25 _93444fe79c--text--e4SBY _93444fe79c--text_letterSpacing__normal--tfToq",
+                "data-mark": "MainPrice"
+            }
+        }
+    }
+}

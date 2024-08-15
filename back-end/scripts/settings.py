@@ -10,6 +10,9 @@ def getSettings():
 def getRequestSetting(settingsName):
     return settings["request"][settingsName]
 
+def getHtmlSetting(settingsName):
+    return settings["html"][settingsName]
+
 rootPath = Path(__file__).resolve().parents[1]
 settings = parseSettingsJSON(rootPath)
     
