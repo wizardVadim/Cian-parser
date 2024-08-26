@@ -4,7 +4,17 @@
         "deal_type": "sale",
         "engine_version": 2,
         "offer_type": "flat",
-        "region": 4774
+        "region": 4774,
+        "rooms": {
+            "room1": 1,
+            "room2": 0,
+            "room3": 0,
+            "room4": 0,
+            "room5": 0,
+            "room6": 0,
+            "room7": 0,
+            "room9": 0  
+        }
     },
     "html": {
         "card": {
@@ -18,6 +28,10 @@
                 "class": "_93444fe79c--color_black_100--Ephi7 _93444fe79c--lineHeight_28px--KFXmc _93444fe79c--fontWeight_bold--BbhnX _93444fe79c--fontSize_22px--sFuaL _93444fe79c--display_block--KYb25 _93444fe79c--text--e4SBY _93444fe79c--text_letterSpacing__normal--tfToq",
                 "data-mark": "MainPrice"
             }
+        },
+
+        "page_button": {
+            "class": "_93444fe79c--button--KVooB _93444fe79c--link-button--ujZuh _93444fe79c--M--I5Xj6 _93444fe79c--button--WChcG"
         }
     }
 }
