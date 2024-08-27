@@ -1,8 +1,16 @@
+from logging import ERROR
+from venv import logger
+
 import requests
 import settings
 import random
 import time
+import datetime
+import logging
+import os
 from bs4 import BeautifulSoup
+
+from backend.scripts.settings import getLoggerSetting
 
 # Vars
 
@@ -12,6 +20,8 @@ lastPage = 1
 # Run
 
 def runApplication():
+
+    logging.info("App has been STARTED: " + str(datetime.datetime.now().time()) + "\n OS: " + os.name + " " + os.getlogin())
 
     currentPageNum = 1
     global lastPage
@@ -25,7 +35,7 @@ def runApplication():
 
         link = getLink(currentPageNum)
 
-        print("\n CURRENT LINK: " + str(link) + "\n")
+        logging.info("\n CURRENT LINK: " + str(link) + "\n")
 
         htmlText = getHTMLText(link)
 
@@ -43,33 +53,31 @@ def runApplication():
         allTitles = bs.findAll('span', str(titleClass))
         allAvailablePagesLinks = bs.findAll('a', str(pageButtonClass))
 
-        print(str(allAvailablePagesLinks))
-
         for currentTitle in allTitles:
             titles.append(str(currentTitle.text))
 
+        # Update last page
         for currentPage in allAvailablePagesLinks:
             pageNumber = getPageNumberFromLink(currentPage["href"])
-            print("CURRENT PAGE HREF: " + str(currentPage["href"]))
-            print("PAGE NUMBER: " + pageNumber)
+            logging.info("CURRENT PAGE HREF: " + str(currentPage["href"]))
+            logging.info("PAGE NUMBER: " + str(pageNumber))
             pageNumber = int(pageNumber)
 
             if (pageNumber > lastPage):
                 lastPage = pageNumber
 
-        print("\n LAST PAGE: " + str(lastPage) + "\n")
+        logging.info("\n LAST PAGE: " + str(lastPage) + "\n")
 
         currentPageNum += 1
 
-    # for title in titles:
-    #     print(title)
+    logging.info("Founded titles: \n" + titles)
+
+    logging.info("\nApp has been ENDED: " + str(datetime.datetime.now().time()) + "\n OS: " + os.name + " " + os.getlogin())
 
     
 # HTML Parsing
 
-def getHTMLText(link): 
-
-    link = getLink()
+def getHTMLText(link):
 
     result = requests.get(link)
 
@@ -86,7 +94,7 @@ def getHTMLText(link):
 def getPageNumberFromLink(link):
     startIndex  = link.find("p=")
 
-    if type(startIndex) != type(1):
+    if type(startIndex) != type(1) or startIndex == -1:
         return 0
     else:
         startIndex = startIndex + 2
@@ -143,10 +151,6 @@ def getLink(p = 1):
 
 # Error
 
-def printError(errorText):
-
-    print("Error: " + errorText)
-
 def isErrors():
 
     global errors
@@ -154,13 +158,35 @@ def isErrors():
     if len(errors) > 0:
 
         for i in errors:
-            printError(i)
+            logging.error(i)
 
         return True
     
     return False
 
-# Init
+# Logging
+def initLogger():
 
-runApplication()
+    loggingLevels = {
+        "INFO": logging.INFO,
+        "DEBUG": logging.DEBUG,
+        "WARNING": logging.WARNING,
+        "ERROR": logging.ERROR,
+        "CRITICAL": logging.CRITICAL
+    }
+
+    levelLog = loggingLevels[settings.getLoggerSetting("level")]
+
+    loggerRoot = settings.getLoggerRoot()
+    filenameLog = loggerRoot + "/" + getLoggerSetting("filename")
+
+    logging.basicConfig(level=levelLog, filename=filenameLog, filemode="w")
+
+# Init
+try:
+    initLogger()
+    runApplication()
+except Exception as exc:
+    logging.critical(str(exc) + "\n" + str(exc.__context__))
+
 

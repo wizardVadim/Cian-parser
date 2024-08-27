@@ -13,6 +13,12 @@ def getRequestSetting(settingsName):
 def getHtmlSetting(settingsName):
     return settings["html"][settingsName]
 
+def getLoggerSetting(settingName):
+    return settings["logger"][settingName]
+
+def getLoggerRoot():
+    return (str(Path(__file__).resolve().parents[1] / 'logs'))
+
 rootPath = Path(__file__).resolve().parents[1]
 settings = parseSettingsJSON(rootPath)
     

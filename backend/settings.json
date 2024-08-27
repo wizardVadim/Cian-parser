@@ -33,5 +33,10 @@
         "page_button": {
             "class": "_93444fe79c--button--KVooB _93444fe79c--link-button--ujZuh _93444fe79c--M--I5Xj6 _93444fe79c--button--WChcG"
         }
+    },
+
+    "logger": {
+        "level": "INFO",
+        "filename": "main.log"
     }
 }
