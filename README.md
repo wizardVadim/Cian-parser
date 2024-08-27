@@ -61,7 +61,7 @@
             Доступные значения (параметры)
         </th>
         <th>
-            - "https://irkutsk.cian.ru"
+            - "https://city.cian.ru"
         </th>
         <th>
             - "sale" 
